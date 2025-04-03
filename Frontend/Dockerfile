@@ -1,11 +1,5 @@
 FROM node:alpine as build
 
-COPY package.json package.json
-RUN npm install
-COPY . .
-ENV NODE_OPTIONS="--max-old-space-size=1024"
-RUN npm run build
-
 FROM nginx:stable-alpine
 
 COPY --from=build /dist /usr/share/nginx/html
