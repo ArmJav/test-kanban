@@ -21,6 +21,8 @@ services:
   backend:
     build:
       context: ./Backend
+    depends_on:
+      - postgres
     networks:
       - dev
     dns:
