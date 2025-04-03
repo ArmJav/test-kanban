@@ -19,7 +19,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String(50), unique=False, nullable=False)
     hashed_password = Column(String(255), nullable=False)
-    name = Column(Text(50), nullable=False)
+    name = Column(String(50), nullable=False)
     surname = Column(String(50), nullable=False)
     pathynomic = Column(String(50), nullable=True)
     description = Column(Text, nullable=True)
