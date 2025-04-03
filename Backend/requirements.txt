@@ -3,3 +3,5 @@ uvicorn
 dotenv
 sqlalchemy
 bcrypt
+psycopg2
+pydantic
