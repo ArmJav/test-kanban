@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {Kanban} from "@/components/Kanban/ui";
+import {Kanban} from "@/components/Kanban/";
 </script>
 
 <template>
