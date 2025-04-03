@@ -1,5 +1,5 @@
 from config import DATABASE_URL
-from sqlalchemy import create_engine, Column, Integer, String, Text
+from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session,DeclarativeBase, Mapped, mapped_column
 from datetime import datetime
@@ -23,7 +23,7 @@ class User(Base):
     surname = Column(String(50), nullable=False)
     pathynomic = Column(String(50), nullable=True)
     description = Column(Text, nullable=True)
-    date_of_registration = Column(nullable=True)
+    date_of_registration = Column(DateTime, nullable=True)
     role_id = Column(Integer)
 
 Base.metadata.create_all(bind=engine)
