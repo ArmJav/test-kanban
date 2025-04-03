@@ -1,16 +1,23 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
-import {Header} from '@/widget/Header';
-const open = ref(false);
+import { Header } from '@/widget/Header';
 
-const statusLabels = {
+interface Task {
+  id: number;
+  title: string;
+}
+
+type TaskStatus = 'todo' | 'inProgress' | 'done';
+
+const open = ref<boolean>(false);
+
+const statusLabels: Record<TaskStatus, string> = {
   todo: 'Беклог',
   inProgress: 'В процессе',
   done: 'Выполнен'
 };
 
-
-const taskColumns = ref({
+const taskColumns = ref<Record<TaskStatus, Task[]>>({
   todo: [
     { id: 1, title: 'Task 1' },
     { id: 2, title: 'Task 2' }
@@ -19,22 +26,29 @@ const taskColumns = ref({
   done: []
 });
 
-let draggedTask = null;
+let draggedTask: Task | null = null;
 
-const onDragStart = (task) => {
+const onDragStart = (task: Task) => {
   draggedTask = task;
 };
 
-const onDrop = (event, status) => {
+const onDrop = (event: DragEvent, status: TaskStatus) => {
   if (draggedTask) {
     Object.keys(taskColumns.value).forEach((key) => {
-      taskColumns.value[key] = taskColumns.value[key].filter(t => t.id !== draggedTask.id);
+      taskColumns.value[key as TaskStatus] = taskColumns.value[key as TaskStatus].filter(t => t.id !== draggedTask!.id);
     });
     taskColumns.value[status].push(draggedTask);
     draggedTask = null;
   }
 };
+
+const handleOk = () => {
+  console.log('Model open');
+  
+}
 </script>
+
+
 
 <template>
   <Header></Header>
