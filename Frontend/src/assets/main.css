@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: benzin;
+  src: url(./benzin-semibold.otf);
+}
+
+@theme {
+  --color-figma-green: oklch(88.33% 0.2666576978307835 138.9375597997505);
+  --color-figma-red: oklch(67.04% 0.21690773684103343 26.0120955870734);
+  --color-grey: oklch(28.04% 0 0);
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  font-weight: 400;
+
+}
+
+body {
+  background-color: var(--color-grey);
+}
