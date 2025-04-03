@@ -13,6 +13,9 @@ services:
       - frontend
     networks:
       - dev
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     
 
   backend:
@@ -20,9 +23,15 @@ services:
       context: ./Backend
     networks:
       - dev
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
 
   frontend:
     build:
       context: ./Frontend
     networks:
       - dev
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
